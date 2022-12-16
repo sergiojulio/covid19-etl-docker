@@ -11,7 +11,7 @@ app = FastAPI()
 
 @app.get("/")
 def read_root():
-    return {"data": os.environ['GITHUB_COVID19_CHILE']}
+    return {"data": "Running!"}
 
 
 @app.get("/run")
@@ -34,18 +34,11 @@ def run():
     # repo.index.add('README.md')
     my_repo = git.Repo('covid19-chile')
 
-    #origin = my_repo.remote("origin")
-    #assert origin.exists()
-    #origin.fetch()
-
     # copy files
     os.system('cp ./output/covid19.csv ./covid19-chile/covid19.csv')
     os.system('cp ./output/covid19.json ./covid19-chile/covid19.json')
     os.system('cp ./output/covid19.sql ./covid19-chile/covid19.sql')
     if my_repo.is_dirty(untracked_files=True):
-
-        # git_config.set_value('user', 'email', 'sergio@sergiojulio.com')
-        # git_config.set_value('user', 'name', 'Sergio')
 
         print('Changes detected.')
         # commit
