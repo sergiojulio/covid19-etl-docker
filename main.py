@@ -1,6 +1,11 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+# ---------------------------------------------------------------------------
+# Created By  : Sergio Sierra
+# version ='1.0'
+# ---------------------------------------------------------------------------
 import git
 import psutil
-import time
 import os
 from fastapi import FastAPI
 from covid19etl.covid19 import Covid19
@@ -16,15 +21,13 @@ def read_root():
 
 @app.get("/run")
 def run():
-    start_time = time.time()
     pipeline = Covid19()
     pipeline.extract()
     pipeline.transform()
     pipeline.load()
-    print("Memory usage:", usage())
-    print("--- %s seconds ---" % (time.time() - start_time))
 
     github_covid19_chile = os.environ['GITHUB_COVID19_CHILE']
+    cloud = os.environ['CLOUD']
 
     if os.path.isdir("./covid19-chile"):
         os.system("rm -rf ./covid19-chile")
@@ -46,8 +49,8 @@ def run():
         my_repo.index.add('**')
         author = Actor("Sergio", "sergio@sergiojulio.com")
         committer = Actor("Sergio", "sergio@sergiojulio.com")
-        my_repo.index.commit('Commit from Cloud Run', author=author, committer=committer)
         # print(my_repo.remotes.origin.pull())
+        my_repo.index.commit('Commit from ' + cloud, author=author, committer=committer)
         print(my_repo.remotes.origin.push('master:master'))
 
     else:
