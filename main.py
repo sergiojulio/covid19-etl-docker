@@ -57,7 +57,7 @@ def run():
         print('No changes detected.')
 
     # kill process system exit 0
-    return {"data": "successfully"}
+    return {"status": "1"}
 
 
 def dump(obj):
