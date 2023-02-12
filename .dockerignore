@@ -1,2 +1,4 @@
 .github/
 __pycache__
+covid19-chile/
+test.py
