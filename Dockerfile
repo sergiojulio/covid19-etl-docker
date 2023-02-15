@@ -11,7 +11,7 @@ EXPOSE 8080
 RUN apt-get update
 RUN apt-get install --yes --no-install-recommends git
 RUN pip install setuptools
-RUN git clone https://github.com/sergiojulio/covid19-etl-docker.git
+# RUN git clone https://github.com/sergiojulio/covid19-etl-docker.git
 WORKDIR /covid19-etl-docker
 RUN pip install --no-cache-dir --upgrade -r ./requirements.txt
 RUN chmod 777 /covid19-etl-docker/input && chmod 777 /covid19-etl-docker/output
