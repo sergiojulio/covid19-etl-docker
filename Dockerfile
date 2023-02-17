@@ -5,7 +5,7 @@ COPY requirements.txt ./
 RUN pip3 install --no-cache-dir -r requirements.txt
 COPY . .
 CMD [ "python", "./main.py" ]
-
+# --------------------------------------------------------------------
 FROM python:3.9-slim
 EXPOSE 8080
 RUN apt-get update
