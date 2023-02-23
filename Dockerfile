@@ -1,4 +1,6 @@
 FROM python:3.9-slim
+RUN useradd --create-home appuser
+USER appuser
 EXPOSE 8080
 RUN apt-get update
 RUN apt-get install --yes --no-install-recommends git
