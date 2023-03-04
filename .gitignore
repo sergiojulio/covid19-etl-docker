@@ -129,3 +129,4 @@ dmypy.json
 .pyre/
 
 covid19-chile/
+.idea/
