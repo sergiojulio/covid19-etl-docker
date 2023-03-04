@@ -50,7 +50,7 @@ on:
 
 env:
   PROJECT_ID: 'two-months-off-18112021' # TODO: update Google Cloud project id
-  GAR_LOCATION: 'us-central1' # TODO: update Artifact Registry location
+  GAR_LOCATION: 'us-central4' # TODO: update Artifact Registry location
   SERVICE: 'covid19-chile-docker' # TODO: update Cloud Run service name
   REGION: 'us-central1' # TODO: update Cloud Run service region
 
