@@ -95,8 +95,7 @@ jobs:
       - name: Build and Push Container
         run: |-
           docker build -t "${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/images/${{ env.SERVICE }}:latest" ./
-          # docker push "${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/images/${{ env.SERVICE }}:${{ github.sha }}"
-          docker push "us-east4-docker.pkg.dev/two-months-off-18112021/images/covid19-chile-docker:latest"
+          docker push us-east4-docker.pkg.dev/two-months-off-18112021/images/covid19-chile-docker:latest
           
       # END - Docker auth and build
 
