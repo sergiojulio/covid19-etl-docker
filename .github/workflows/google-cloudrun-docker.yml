@@ -45,6 +45,17 @@
 name: Build and Deploy to Cloud Run
 
 on:
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'warning'
+        type: choice
+        options:
+          - info
+          - warning
+          - debug
   push:
     branches: [ "master" ]
 
@@ -94,7 +105,7 @@ jobs:
 
       - name: Build and Push Container
         run: |-
-          docker build -t "${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/images/${{ env.SERVICE }}:latest" ./
+          docker build -t us-east4-docker.pkg.dev/two-months-off-18112021/images/covid19-chile-docker:latest ./
           docker push us-east4-docker.pkg.dev/two-months-off-18112021/images/covid19-chile-docker:latest
           
       # END - Docker auth and build
