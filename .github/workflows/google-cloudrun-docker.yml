@@ -103,6 +103,10 @@ jobs:
           password: '${{ steps.auth.outputs.access_token }}'
           registry: '${{ env.GAR_LOCATION }}-docker.pkg.dev'
 
+      - name: Debug
+        run: |-
+          gcloud artifacts repositories list --limit=5
+
       - name: Build and Push Container
         run: |-
           docker build -t us-east4-docker.pkg.dev/two-months-off-18112021/images/covid19-chile-docker:latest ./
