@@ -107,6 +107,7 @@ jobs:
         run: |-
           gcloud artifacts repositories list --limit=5
           gcloud artifacts repositories describe  --location us-east4 images
+          gcloud auth configure-docker us-east4-docker.pkg.dev
 
       - name: Build and Push Container
         run: |-
