@@ -106,6 +106,7 @@ jobs:
       - name: Debug
         run: |-
           gcloud artifacts repositories list --limit=5
+          gcloud artifacts repositories describe  --location us-east4 images
 
       - name: Build and Push Container
         run: |-
