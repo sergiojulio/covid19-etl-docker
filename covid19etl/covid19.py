@@ -419,9 +419,12 @@ class Covid19:
 
             # _fecha > fecha[-1] && fecha < fecha
             # mini datafrae del dia
-
-            startdate = pd.to_datetime(fecha_anterior).date()
-            enddate = pd.to_datetime(fecha).date()
+            # ./covid19etl/covid19.py:423: UserWarning: Parsing '19-12-2022' in DD/MM/YYYY format.
+            # Provide format or specify infer_datetime_format=True for consistent parsing.
+            startdate = pd.to_datetime(fecha_anterior, format='DD-MM-YYYY', infer_datetime_format=True).date()
+            #   startdate = pd.to_datetime(fecha_anterior).date() ./covid19etl/covid19.py:424: UserWarning:
+            #   Parsing '23-12-2022' in DD/MM/YYYY format. Provide format or specify infer_datetime_format=True for consistent parsing.
+            enddate = pd.to_datetime(fecha, format='DD-MM-YYYY', infer_datetime_format=True).date()
 
             aux_df = vacunacion_df[(vacunacion_df['fecha'] > startdate) & (vacunacion_df['fecha'] <= enddate)]\
                 .groupby('codigo_comuna')[columna_nombre].sum().reset_index()
