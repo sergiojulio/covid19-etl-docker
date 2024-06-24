@@ -130,3 +130,5 @@ dmypy.json
 
 covid19-chile/
 .idea/
+
+test.py
